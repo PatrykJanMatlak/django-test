@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import View
 
 
 
@@ -24,3 +25,9 @@ def about(request):
   context={
     }
   return render(request, "about.html", context)  
+
+class ContactView(View):
+  def get(self, request, *args, **kwargs):
+    context={
+    }
+    return render(request, "contact.html", context)
