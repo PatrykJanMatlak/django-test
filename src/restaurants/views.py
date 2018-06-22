@@ -5,6 +5,7 @@ from django.shortcuts import render
 var_context="Mango"
 shopping_list=["Water","Apple","Candies"]
 # Create your views here.
+
 def home(request):
   context={
     "var1":var_context,
@@ -12,4 +13,14 @@ def home(request):
     "var2":"Verbatim test"
 
     }
-  return render(request, "base.html", context) 
+  return render(request, "home.html", context)
+
+def contact(request):
+  context={
+    }
+  return render(request, "contact.html", context) 
+
+def about(request):
+  context={
+    }
+  return render(request, "about.html", context)  

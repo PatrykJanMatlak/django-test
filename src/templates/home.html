@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Hello!</p>
+<p>Testing variable : {{var1}}</p>
+
+{% verbatim %}
+<p>Testing verbatim function : {{var2}}</p>
+{% endverbatim %}
+
+
+<p>Shopping list:</p>
+{% for item in shopping_list %}
+    <ul>
+        <li>
+            {{item}}
+        </li>
+    </ul>
+{% endfor %}
+
+{% endblock %}

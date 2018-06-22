@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 </html>
 <head>
-    <title>My 1st django page</title>
+    <title>{% block head_title %} Project 77 {% endblock head_title %}</title>
 </head>
 <body>
-<p>Hello!</p>
-<p>Testing variable : {{var1}}</p>
+<h1>Project 77</h1>
+<a href='/'>Home</a>
+<a href='/about/'>About</a>
+<a href='/contact/'>Contact</a>
 
-{% verbatim %}
-<p>Testing verbatim function : {{var2}}</p>
-{% endverbatim %}
-
-
-<p>Shopping list:</p>
-{% for item in shopping_list %}
-    <ul>
-        <li>
-            {{item}}
-        </li>
-    </ul>
-{% endfor %}
+<div class="container">
+{% block content %}
+{% endblock %}
+</div>
 
 </body>
 </html>
