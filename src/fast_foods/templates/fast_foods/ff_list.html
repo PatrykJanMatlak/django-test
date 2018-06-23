@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{block.super}} || Fast Foods {% endblock head_title %}
+
+{% block content %}
+<h1>Fast Foods list:</h1>
+
+<ul>
+
+{% for obj in list2 %}
+<li>{{obj}}: {{ obj.location }} </li>
+{% endfor %}
+
+</ul>   
+{% endblock content %}
