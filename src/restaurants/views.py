@@ -4,14 +4,11 @@ from django.views.generic import TemplateView
 from .models import RestaurantLocation
 
 
-list1=[1,2,3]
-
 def restaurant_listview(request):
   template_name="restaurants/restaurants_list.html"
-  try:
-    queryset = RestaurantLocation.objects.all()
-  except:
-    pass
+  
+  queryset = RestaurantLocation.objects.all()
+
   context={
     "list1":queryset
 

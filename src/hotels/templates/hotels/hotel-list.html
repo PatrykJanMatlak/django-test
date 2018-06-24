@@ -1,0 +1,15 @@
+{% extends "base.html"%}
+{% block head_title %}{{block.super}} || Hotels {% endblock head_title %}
+
+{% block content %}
+
+<h1>Hotel list:</h1>
+<ul>
+
+
+{% for hotel in list2  %}
+<li>{{hotel.name}} - {{hotel.location}} </li>
+{% endfor %}
+
+</ul>
+{% endblock content %}
