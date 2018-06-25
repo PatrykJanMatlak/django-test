@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.views.generic import TemplateView
-from restaurants.views import restaurant_listview
+from django.views.generic import TemplateView, ListView
+from restaurants.views import RestaurantListView
 from fast_foods.views import ff_listview
 from hotels.views import hotels_view
 from pubs.views import pubs_view
@@ -24,10 +24,13 @@ from pubs.views import pubs_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',TemplateView.as_view(template_name="home.html")),
-    url(r'^restaurants/', restaurant_listview),
-    url(r'^fast_foods/', ff_listview),
-    url(r'^hotels/', hotels_view),
-    url(r'^pubs/', pubs_view),
-    url(r'^contact/',TemplateView.as_view(template_name="contact.html")),
-    url(r'^about/', TemplateView.as_view(template_name="about.html"))
+    url(r'^restaurants/$', RestaurantListView.as_view()),
+    url(r'^fast_foods/$', ff_listview),
+    url(r'^hotels/$', hotels_view),
+    url(r'^pubs/$', pubs_view),
+    url(r'^restaurants/(?P<slug>\w+)/$', RestaurantListView.as_view() ),
+    url(r'^contact/$',TemplateView.as_view(template_name="contact.html")),
+    url(r'^about/$', TemplateView.as_view(template_name="about.html")),
+
+
 ]

@@ -1,18 +1,24 @@
+
+from django.db.models import Q
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from .models import RestaurantLocation
 
 
-def restaurant_listview(request):
-  template_name="restaurants/restaurants_list.html"
-  
+class RestaurantListView(ListView):
+  template_name ="restaurants/restaurants_list.html"
   queryset = RestaurantLocation.objects.all()
+  
 
-  context={
-    "list1":queryset
+  def get_queryset(self):
 
-  }
-  return render(request, template_name ,context)
+    slug = self.kwargs.get("slug")
 
+    if slug:
+      queryset= RestaurantLocation.objects.filter(Q(category__icontains = slug) | Q(category__iexact = slug))
+    else:
+      queryset= RestaurantLocation.objects.all()
+
+    return queryset
 
