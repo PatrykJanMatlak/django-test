@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+{% block head_title %}{{block.super}} || {{object.name}} {% endblock head_title %}
+
+{% block content %}
+
+<h1>Hotel {{object.name}}</h1>
+<ul>
+
+<li>    
+    <p>{{object.city}}, {{object.street}}. </p>
+    <p>Number of stars: {{object.stars_number}}.</p>
+    <p>Opinion: {{object.opinion}} </p></li>
+</ul>
+{% endblock content %}
