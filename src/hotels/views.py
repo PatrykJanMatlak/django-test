@@ -1,13 +1,13 @@
+from django.db.models import Q
 from django.shortcuts import render
+from django.views import View
+from django.views.generic import TemplateView, ListView
 from .models import HotelOpinion
+
 
 # Create your views here.
 
-def hotels_view(request):
+class HotelView(ListView):
     template_name ="hotels/hotel-list.html"
     queryset = HotelOpinion.objects.all()
-
-    context={
-        "list2":queryset
-    }
-    return render(request, template_name, context)
+    

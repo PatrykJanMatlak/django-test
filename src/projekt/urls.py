@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView, ListView
 from restaurants.views import RestaurantListView
 from fast_foods.views import ff_listview
-from hotels.views import hotels_view
+from hotels.views import HotelView
 from pubs.views import pubs_view
 
 urlpatterns = [
@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^$',TemplateView.as_view(template_name="home.html")),
     url(r'^restaurants/$', RestaurantListView.as_view()),
     url(r'^fast_foods/$', ff_listview),
-    url(r'^hotels/$', hotels_view),
+    url(r'^hotels/$', HotelView.as_view()),
     url(r'^pubs/$', pubs_view),
     url(r'^restaurants/(?P<slug>\w+)/$', RestaurantListView.as_view() ),
     url(r'^contact/$',TemplateView.as_view(template_name="contact.html")),
