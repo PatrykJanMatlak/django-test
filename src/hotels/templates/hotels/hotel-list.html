@@ -8,7 +8,8 @@
 
 
 {% for hotel in list2  %}
-<li>{{hotel.name}} - {{hotel.location}} </li>
+<li><p> Hotel {{hotel.name}} - {{hotel.city}}, {{hotel.street}}. Number of stars: {{hotel.stars_number}}.</p>
+    <p>Opinion: {{hotel.opinion}} </p></li>
 {% endfor %}
 
 </ul>
