@@ -8,7 +8,7 @@
 
 
 {% for hotel in object_list  %}
-<li><p> Hotel {{hotel.name}} - {{hotel.city}}, {{hotel.street}}. Number of stars: {{hotel.stars_number}}.</p>
+<li><p><a href='/hotels/{{hotel.slug}}'> Hotel {{hotel.name}}</a> - {{hotel.city}}, {{hotel.street}}. Number of stars: {{hotel.stars_number}}.</p>
     <p>Opinion: {{hotel.opinion}} </p></li>
 {% endfor %}
 

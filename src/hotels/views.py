@@ -10,12 +10,7 @@ from .models import HotelOpinion
 class HotelView(ListView):
     queryset = HotelOpinion.objects.all()
     
+
+
 class HotelDetailView(DetailView):
     queryset = HotelOpinion.objects.all()
-
-    def get_object(self, *args , **kwargs):
-        hotel_name = self.kwargs.get('hotel_name')
-        obj = get_object_or_404 (HotelOpinion, name = hotel_name)
-
-        return obj
-
