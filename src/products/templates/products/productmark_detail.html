@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{block.super}} || {{object}} {% endblock head_title %}
+
+{% block content %}
+
+
+
+
+<h3>{{object}}</h3>
+    <p>Price: {{ object.price }} zł</p>
+    <p>Opinion: {{object.opinion}}</p>
+    <p>Mark: {{object.score}} / 10</p></li>
+
+
+{% endblock content %}
