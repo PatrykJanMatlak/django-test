@@ -15,7 +15,7 @@ def unique_slug_generator(instance, new_slug=None):
     qs_exsists =  Class1.objects.filter(slug=slug).exists()
 
     if qs_exsists:
-        new_slug =  "{slug} - randstr".format(
+        new_slug =  "{slug} - {randstr}".format(
             slug=slug,
             randstr=random_string_generator(size = 4)
             )
