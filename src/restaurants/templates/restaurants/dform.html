@@ -6,8 +6,8 @@
 
 <h2>Add restaurant</h2>
 
-{% if errors %}
-{{errors}}
+{% if form.errors %}
+{{form.errors}}
 {% endif %}
 
 <form method='POST'> {% csrf_token %}
