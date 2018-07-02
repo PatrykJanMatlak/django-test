@@ -4,21 +4,22 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import RestaurantLocation
-from .forms import RestaurantCreateForm
+from .forms import  RestaurantLocationCreateForm
 from django.http import HttpResponseRedirect
 
 
 def restaurant_createview(request):
   template_name = 'restaurants/dform.html'
-  form = RestaurantCreateForm(request.POST or None)
+  form = RestaurantLocationCreateForm(request.POST or None)
   errors = None
   
   if form.is_valid():
-    obj = RestaurantLocation.objects.create(
-      name = form.cleaned_data.get('name'),
-      location = form.cleaned_data.get('location'),
-      category = form.cleaned_data.get('category')
-      )
+    form.save()
+    # obj = RestaurantLocation.objects.create(
+    #   name = form.cleaned_data.get('name'),
+    #   location = form.cleaned_data.get('location'),
+    #   category = form.cleaned_data.get('category')
+    #   )
     return HttpResponseRedirect("/restaurants/")
 
   if form.errors:
