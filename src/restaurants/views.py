@@ -8,7 +8,7 @@ from .forms import  RestaurantLocationCreateForm
 from django.http import HttpResponseRedirect
 
 
-def restaurant_createview(request):
+def restaurant_createvie(request):
   template_name = 'restaurants/dform.html'
   form = RestaurantLocationCreateForm(request.POST or None)
   errors = None
@@ -43,6 +43,7 @@ class RestaurantListView(ListView):
 class RestaurantDetailView(DetailView):
   queryset = RestaurantLocation.objects.all()
 
+
 class RestaurantCreateView(CreateView):
   form_class = RestaurantLocationCreateForm
   template_name = 'restaurants/dform.html'
@@ -50,3 +51,26 @@ class RestaurantCreateView(CreateView):
   success_url="/restaurants/"
 
 
+
+def restaurant_createview(request):
+
+  template_name = 'restaurants/dform.html'
+  form = RestaurantLocationCreateForm(request.POST or None)
+  errors = None
+  
+  if form.is_valid():
+    if request.user.is_authenticated():
+      instance = form.save(commit = False)
+      instance.owner = request.user
+      instance.save()
+      return HttpResponseRedirect("/restaurants/")
+    else:
+      return HttpResponseRedirect("/about/")
+
+  if form.errors:
+    print (form.errors)
+    errors = form.errors
+    
+  context = {"form":form, "errors":errors}
+
+  return render(request, template_name, context)
