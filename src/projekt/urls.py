@@ -16,26 +16,28 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView, ListView
-from restaurants.views import RestaurantListView, RestaurantDetailView, RestaurantCreateView #restaurant_createview
+from restaurants.views import RestaurantListView, RestaurantDetailView, RestaurantCreateView, restaurant_createview
 from fast_foods.views import ff_listview
 from hotels.views import HotelView, HotelDetailView
 from pubs.views import pubs_view
 from products.views import ProductsView, ProductDetail
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',TemplateView.as_view(template_name="home.html")),
-    url(r'^restaurants/$', RestaurantListView.as_view()),
-    url(r'^restaurants/create/$', RestaurantCreateView.as_view()),
-
-    url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view()),
+    url(r'^$',TemplateView.as_view(template_name="home.html"), name = "home"),
+    url(r'^login/', LoginView.as_view(template_name = 'login.html'), name = "login"),
+    url(r'^restaurants/$', RestaurantListView.as_view(), name = "restaurants"),
+    url(r'^restaurants/create/$', RestaurantCreateView.as_view(), name = "restaurant-create"),
+    #url(r'^restaurants/create/$', restaurant_createview),
+    url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view(), name = "restaurant-detail"),
     url(r'^fast_foods/$', ff_listview),
     url(r'^hotels/$', HotelView.as_view()),
     url(r'^hotels/(?P<slug>[\w-]+)/$', HotelDetailView.as_view()),
     url(r'^pubs/$', pubs_view),
     #url(r'^restaurants/(?P<slug>\w+)/$', RestaurantListView.as_view() ),
-    url(r'^contact/$',TemplateView.as_view(template_name="contact.html")),
-    url(r'^about/$', TemplateView.as_view(template_name="about.html")),
+    url(r'^contact/$',TemplateView.as_view(template_name="contact.html"), name = "contact"),
+    url(r'^about/$', TemplateView.as_view(template_name="about.html"), name = "about"),
     url(r'^products/$', ProductsView.as_view()),
     url(r'^products/(?P<slug>[\w-]+)/$', ProductDetail.as_view())
 
