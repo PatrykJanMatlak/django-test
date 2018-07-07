@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{block.super}} || Menu items {% endblock head_title %}
+
+{% block content %}
+<h1>Menu items:</h1>
+
+<ul>
+
+{% for obj in object_list %}
+<li><a href = '{{obj.get_absolute_url}}'>{{obj.name}} ({{obj.restaurant.name}})</a>
+    </li></ul> 
+    {% endfor %}
+{% endblock content %}
