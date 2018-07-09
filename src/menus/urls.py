@@ -3,8 +3,8 @@ from .views import ItemCreateView, ItemDetailView, ItemListView, ItemUpdateView
 from django.contrib.auth.views import LoginView
 
 urlpatterns= [
+    url(r'^list/$', ItemListView.as_view(), name = "list"),
     url(r'^create/$', ItemCreateView.as_view(), name = "create"),
-    url(r'^update/$', ItemUpdateView.as_view(), name = "create"),
     url(r'^(?P<pk>\d+)/$', ItemDetailView.as_view(), name = "detail"),
-    url(r'$', ItemListView.as_view(), name = "list")
+    url(r'^(?P<pk>\d+)/edit/$', ItemUpdateView.as_view(), name = "edit")
 ]
